@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Dialog, DialogContent, DialogHeader, DialogFooter } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import pathLogo from '../../../public/assets/speedoLogo.svg'
 import pathPaperMap from '../../../public/assets/paperMap.svg'
-import Upload from '@/components/webComponents/Upload'
+import Upload from '@/components/Upload'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,13 +17,16 @@ function Home() {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100">
 
-      <nav className="w-full py-4 bg-white shadow-md flex items-center justify-start px-8">
+      <nav className="w-full py-4 bg-white shadow-md flex items-center justify-between px-8">
         <div className="flex items-center">
           <img
             src={pathLogo}
             alt="Speedo Logo"
           />
         </div>
+        <Link to="/login">
+          <Button>Login</Button>
+        </Link>
       </nav>
 
       <div className="w-full flex items-center justify-center mt-10">
@@ -53,9 +57,6 @@ function Home() {
             <h2 className="text-xl font-semibold">Upload Trip</h2>
           </DialogHeader>
           <Upload onClose={handleClose} />
-          <DialogFooter>
-            {/* Modal Footer */}
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
